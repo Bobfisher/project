@@ -1,6 +1,7 @@
 import React, { lazy } from "react"
 import { Navigate } from "react-router-dom"
 const Home = lazy(()=>import('@/views/Home'))
+const Page1 = lazy(()=>import('@/views/Page1'))
 // const home = lazy(()=>import('@/views/Home'))
 const withLoadingComponet = (comp:React.ReactElement) => {
     return (
@@ -16,7 +17,13 @@ const routers = [
     },
     {
         path:'/home',
-        element:withLoadingComponet(<Home/>)
+        element:withLoadingComponet(<Home/>),
+        children:[
+            {
+                path:'page1',
+                element:withLoadingComponet(<Page1/>),
+            }
+        ]
     },
 
 ]
